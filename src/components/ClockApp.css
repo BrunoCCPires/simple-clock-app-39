@@ -1,0 +1,493 @@
+.clock-app {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.clock-icon-small {
+  font-size: 1.5rem;
+}
+
+.app-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.user-email {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.icon-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  font-size: 1.25rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.icon-button:active {
+  transform: scale(0.95);
+}
+
+.settings-panel {
+  background: rgba(255, 255, 255, 0.95);
+  margin: 1rem 2rem 0;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.settings-panel h3 {
+  margin: 0 0 1rem 0;
+  color: #1a1a1a;
+  font-size: 1.2rem;
+}
+
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.settings-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.settings-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.sync-status {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.sync-indicator {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.sync-local { color: #999; }
+.sync-syncing { color: #667eea; }
+.sync-synced { color: #10b981; }
+.sync-error { color: #ef4444; }
+
+.clock-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 3rem;
+}
+
+.clock-display {
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.time {
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.date {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+}
+
+.quote-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.quote-section h2 {
+  margin: 0 0 1rem 0;
+  color: #1a1a1a;
+  font-size: 1.5rem;
+}
+
+.quote {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333;
+  font-style: italic;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(102, 126, 234, 0.05);
+  border-left: 4px solid #667eea;
+  border-radius: 8px;
+}
+
+.quote-prompt {
+  color: #999;
+  text-align: center;
+  margin: 1.5rem 0;
+  font-size: 1rem;
+}
+
+.error-message {
+  background: #fee;
+  border: 1px solid #fcc;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.error-icon {
+  font-size: 2rem;
+}
+
+.error-message p {
+  color: #c00;
+  margin: 0;
+  text-align: center;
+}
+
+.upgrade-button,
+.retry-button {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.upgrade-button:hover,
+.retry-button:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.generate-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.generate-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.generate-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.last-updated {
+  text-align: center;
+  color: #999;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.subscription-info {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-card h3 {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.plan-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.plan-status {
+  text-transform: capitalize;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.status-active { color: #10b981; }
+.status-inactive { color: #999; }
+.status-cancelled { color: #f59e0b; }
+.status-expired { color: #ef4444; }
+.status-none { color: #999; }
+
+.credits-display {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.credits-remaining {
+  color: #667eea;
+}
+
+.credits-separator {
+  color: #ccc;
+}
+
+.credits-total {
+  color: #999;
+  font-size: 1.5rem;
+}
+
+.credits-bar {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.credits-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s ease;
+}
+
+.manage-subscription-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.manage-subscription-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.manage-subscription-button:active {
+  transform: translateY(0);
+}
+
+@media (prefers-color-scheme: dark) {
+  .settings-panel,
+  .quote-section,
+  .subscription-info {
+    background: rgba(30, 30, 30, 0.95);
+  }
+
+  .settings-panel h3,
+  .quote-section h2,
+  .plan-name {
+    color: #ffffff;
+  }
+
+  .settings-group label,
+  .quote {
+    color: #e5e7eb;
+  }
+
+  .info-card h3 {
+    color: #9ca3af;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 1rem;
+  }
+
+  .user-email {
+    display: none;
+  }
+
+  .settings-panel,
+  .quote-section,
+  .subscription-info {
+    margin: 1rem;
+  }
+
+  .clock-main {
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .time {
+    font-size: 4rem;
+  }
+
+  .date {
+    font-size: 1.2rem;
+  }
+
+  .quote-section,
+  .subscription-info {
+    padding: 1.5rem;
+  }
+
+  .subscription-info {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-left {
+    gap: 0.5rem;
+  }
+
+  .app-title {
+    font-size: 1rem;
+  }
+
+  .header-right {
+    gap: 0.5rem;
+  }
+
+  .settings-panel,
+  .quote-section,
+  .subscription-info {
+    padding: 1rem;
+  }
+
+  .time {
+    font-size: 3rem;
+  }
+
+  .quote {
+    font-size: 1rem;
+  }
+
+  .generate-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
